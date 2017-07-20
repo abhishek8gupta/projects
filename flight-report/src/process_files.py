@@ -52,19 +52,28 @@ class CsvWriter:
             for row in values:
                 logging.debug("values=%s", values)
                 #str1 = ','.join(values)
-                writer.writerow(row)
+                try:
+                    writer.writerow(row)
+                except:
+                    logging.error("unable to write row %s. skipping ...", row)
+                    continue
+
 
 infolder=sys.argv[1]
 outfolder=sys.argv[2]
 
 files=getInputfiles(infolder)
 logging.info("input files:%s", files)
-headerdone=False
 
 for filename in files:
     csvWriter=CsvWriter(filename, outfolder)
     rowcount=0
-    tree = ET.parse(filename)
+    headerdone=False
+    try:
+        tree = ET.parse(filename)
+    except:
+        logging.error("filed to parse file % ", filename)
+        continue
     taglist = []
     row=[]
     csvdata=[]
