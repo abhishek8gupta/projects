@@ -1,0 +1,34 @@
+<row>
+    <row_id="1" _uuid="96FADA2E-67BF-4E16-8172-6E95D537BF5D" _position="1" _address="http://data.sfgov.org/resource/jzyy-jx2t/1">
+	<readperiod>200801-01-01T00:00:00</readperiod>
+	<utilitytypeabbrev>EA</utilitytypeabbrev>
+	<utilitydescription>Electric A</utilitydescription>
+	<meterreadingid>119</meterreadingid>
+	<meterid>1176</meterid>
+	<meternumber>70-251-407</meternumber>
+	<servicelocation>American Airlines Motor Generator for Plane Power</servicelocation>
+	<meterlocation>ELC89</meterlocation>
+	<agrmtid>1958</agrmtid>
+	<agrmtnumber>L82-0111</agrmtnumber>
+	<agreementtitle>American Airlines Lease And Use Agreement in Terminal3</agreementtitle>
+	<provid>12263</provid>
+	<provassnstart>200801-01-01T00:00:00</provassnstart>
+	<provassnend>201106-01-01T00:00:00</provassnend>
+	<previousreading>6586</previousreading>
+	<meterreading>6644</meterreading>
+	<baseusage>58</baseusage>
+	<multifactor>800</multifactor>
+	<totalusage>46400</totalusage>
+	<adjustment>0</adjustment>
+	<netusage>46400</netusage>
+	<previoususage>0</previoususage>
+	<usagepctchange>0</usagepctchange>
+	<totaldemand>224</totaldemand>
+	<previousdemand>0</previousdemand>
+	<demandpctchange>0</demandpctchange>
+	<percentuse>100</percentuse>
+	<pctbaseamount>4077.65</pctbaseamount>
+	<pctfueladjustmentamount>0/pctfueladjustmentamount>
+	<pctsalestaxamount>0</pctsalestaxamount>
+	<pcttotalamount>4077.65</pcttotalamount>
+	</row>
