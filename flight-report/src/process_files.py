@@ -40,44 +40,60 @@ class CsvWriter:
         print "lines:", l
         return l
 
+    def writeheader(self, header):
+        with open(self.filename, "a") as csv_file:
+            writer = csv.writer(csv_file, delimiter=',')
+            writer.writerow(header)
+            logging.debug("writing header=%s", header)
+
     def write(self, values):
         with open(self.filename, "a") as csv_file:
             writer = csv.writer(csv_file, delimiter=',')
-            logging.debug("values=%s", values)
-            #str1 = ','.join(values)
-            writer.writerow(values)
+            for row in values:
+                logging.debug("values=%s", values)
+                #str1 = ','.join(values)
+                writer.writerow(row)
 
 infolder=sys.argv[1]
 outfolder=sys.argv[2]
 
 files=getInputfiles(infolder)
 logging.info("input files:%s", files)
+headerdone=False
 
 for filename in files:
     csvWriter=CsvWriter(filename, outfolder)
     rowcount=0
     tree = ET.parse(filename)
-    tagset = Set()
+    taglist = []
     row=[]
+    csvdata=[]
 
     for elem in tree.iter():
         logging.debug("<%s> %s", elem.tag, elem.text)
         rowcount = rowcount+1
         if(elem.tag == "row" and len(row) > 1 ):
             logging.debug("valuesi before=%s", row)
-            csvWriter.write(row)        
+            # csvWriter.write(row)
+            csvdata.append(row)
             row = []
+            if not headerdone:
+                csvWriter.writeheader(taglist)
+                headerdone=True
         
         if(elem.text != None):
             row.append(elem.text)
-        tagset.add(elem.tag)
+            if not headerdone:
+                taglist.append(elem.tag)
+
         #logging.info("rows processed:%d", rowcount)
         sys.stdout.write("processing:\r%d:" % rowcount)
         sys.stdout.flush()
 
+    csvWriter.write(csvdata)
     logging.info("finished processing %s", filename)
     logging.info("records processed:%d", rowcount)
-    logging.info("all tags: %s", tagset)
+    logging.info("all tags: %s", taglist)
 
 logging.info("finished processing all input files. output files are generated %s", outfolder)
 
