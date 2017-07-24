@@ -117,6 +117,15 @@ CREATE TABLE la_flight_op_by_month(
     flightopscount varchar(20)
 );
 
+-- SET SQL_SAFE_UPDATES = 0;
+-- delete from la_flight_op_by_month where flighttype='flighttype';
+-- SET SQL_SAFE_UPDATES = 1;
 -- select * from la_flight_op_by_month
 -- ;
 -- 
+
+select sum(passenger_count) total_passengers, Operating_airline, GEO_Summary as type 
+from sfo_pessenger_stats where activity_period = '2007-05-20'
+group by Operating_airline, GEO_Summary
+order by 1
+;

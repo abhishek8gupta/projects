@@ -18,8 +18,7 @@ $DB_PASS = 'admin111';
     exit();
   }
 
-  // $tablename = $_POST["name"];
-  $tablename = 'weekely_task';
+  $tablename = $_POST["table_name"];
 
    /* select all the weekly tasks from the table googlechart */
   $result = $mysqli->query("SELECT * FROM $tablename");
@@ -63,7 +62,6 @@ $jsonTable = json_encode($table);
 
 ?>
 
-<button type="button" onclick="history.back();">Back</button>
 
 <html>
   <head>
