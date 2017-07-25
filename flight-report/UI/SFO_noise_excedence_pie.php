@@ -19,7 +19,7 @@ $DB_PASS = 'admin111';
   }
 
   // $tablename = $_POST["name"];
-  $tablename = 'weekely_task';
+  $tablename = 'vw_SFO_noise_excedence_pct';
 
    /* select all the weekly tasks from the table googlechart */
   $result = $mysqli->query("SELECT * FROM $tablename");
@@ -35,7 +35,7 @@ $DB_PASS = 'admin111';
         and string will be used for Slice title
     */
 
-    array('label' => 'Weekly Task', 'type' => 'string'),
+    array('label' => 'Airline', 'type' => 'string'),
     array('label' => 'Percentage', 'type' => 'number')
 
 );
@@ -46,7 +46,7 @@ $DB_PASS = 'admin111';
 
       // The following line will be used to slice the Pie chart
 
-      $temp[] = array('v' => (string) $r['weekly_task']); 
+      $temp[] = array('v' => (string) $r['airline']); 
 
       // Values of the each slice
 
@@ -83,7 +83,7 @@ $jsonTable = json_encode($table);
       // Create our data table out of JSON data loaded from server.
       var data = new google.visualization.DataTable(<?=$jsonTable?>);
       var options = {
-           title: 'My Weekly Plan',
+           title: 'SFO noise excedence Jan, 2015',
           is3D: 'true',
           width: 800,
           height: 600

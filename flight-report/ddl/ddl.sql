@@ -39,6 +39,24 @@ CREATE TABLE SFO_noise_excedence(
 
 -- select * from  SFO_noise_excedence
 -- ;
+drop view vw_SFO_noise_excedence_pct
+;
+
+create view vw_SFO_noise_excedence_pct
+as
+select ((total_noise_exceedances*100)/total_excedances) as percentage, airline
+from SFO_noise_excedence,
+(select sum(total_noise_exceedances) total_excedances
+from SFO_noise_excedence where year = 2015 and month='January'
+)b
+;
+
+select *
+from SFO_noise_excedence where year = 2015 and month='January'
+;
+
+select * from vw_SFO_noise_excedence_pct
+;
 
 DROP TABLE IF EXISTS sfo_airtraffic_landing_stats
 ;
